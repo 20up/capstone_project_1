@@ -12,7 +12,6 @@ public class Main {
 
     }
 
-
     public static void home_screen() {
         boolean option = true;
 
@@ -32,9 +31,11 @@ public class Main {
                 switch(choice){
                     case "D":
                         add_deposit();
+                        System.out.println("Deposit Successful" + "\n");
                         break;
                     case "P":
                         make_payment();
+
                         break;
                     case "L":
                         ledger();
@@ -44,29 +45,35 @@ public class Main {
                         option = false;
                         break;
                     default:
-                        System.out.println("!!Input Not Available!!"+"\n");
-                        break;
+                        System.out.println("!!!!INPUT NOT AVAILABLE!!!!" + "\n");
                 }
             } catch (Exception e) {
                 scanner.nextLine();
-                System.out.println("!!exception!!");
+                System.out.println("!!NOT A NUMBER!!");
 
             }
         }
     }
 
     public static void add_deposit(){
-        System.out.println("\n");
-        System.out.print("How much are you depositing:");
-        double amount = scanner.nextDouble();
+        boolean D = true;
 
-        try {
-            FileWriter deposit_file = new FileWriter("deposit_file");
-            deposit_file.write("");
-        } catch (IOException e) {
-            System.out.println("Exception warning");
+        while(D) {
+            System.out.println("\n");
+            System.out.print("Deposit Amount:");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            try {
+                FileWriter deposit_file = new FileWriter("deposit_file", true);
+
+                deposit_file.write("Deposit: " + amount + "\n");
+                deposit_file.close();
+                D = false;
+            } catch (IOException e) {
+                scanner.nextLine();
+                System.out.println("Exception warning d");
+            }
         }
-
     }
 
     public static void make_payment(){
