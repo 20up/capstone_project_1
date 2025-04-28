@@ -18,7 +18,6 @@ public class Main {
             transaction = new FileWriter("transaction.csv", true);
         } catch (IOException e) {
             System.out.println("Exception warning A");
-            ;
         }
     }
 
@@ -31,6 +30,7 @@ public class Main {
 
         while (option) {
             try {
+                System.out.println("\n" + "         |Home|");
                 System.out.println("""
                         |Please choose a Option|
                         D) Add Deposit
@@ -39,9 +39,7 @@ public class Main {
                         X) Exit
                         """);
                 System.out.print("Enter:");
-                //choose an option and auto go to uppercase
                 String choice = scanner.nextLine().toUpperCase();
-                //checks the variable "choice" to see if it matches any of the case values
                 switch (choice) {
                     case "D":
                         add_deposit();
@@ -52,7 +50,7 @@ public class Main {
                         System.out.println("card information saved" + "\n");
                         break;
                     case "L":
-                        ledger();
+                        Ledger.ledger();
                         break;
                     case "X":
                         exit();
@@ -100,13 +98,13 @@ public class Main {
                 System.out.println("Please enter debit information to make payment");
                 System.out.print("Debit/Credit #:");
                 String card_number = scanner.nextLine();
-                if(card_number.length() == 16){
+                if (card_number.length() == 16) {
                     System.out.print("expiration date:");
                     String card_date = scanner.nextLine();//need to make a convert string to date
                     System.out.print("card cvv:");
                     int cvv = scanner.nextInt();
                     scanner.nextLine();
-                }else
+                } else
                     System.out.println("not a valid card number");
 
             } catch (Exception e) {
@@ -119,10 +117,6 @@ public class Main {
                 System.out.println("!!exception!! mp");
             }
         }
-    }
-
-    public static void ledger() {
-
     }
 
     public static void exit() {
