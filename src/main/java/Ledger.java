@@ -4,18 +4,7 @@ import java.util.Scanner;
 
 public class Ledger {
     static Scanner scanner = new Scanner(System.in);
-    static DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    static FileWriter transaction;
-
-    static {
-        try {
-            transaction = new FileWriter("transaction.csv", true);
-        } catch (IOException e) {
-            System.out.println("Exception warning A");
-            ;
-        }
-    }
 
     public static void ledger() {
         boolean option_2 = true;
@@ -38,19 +27,23 @@ public class Ledger {
                         System.out.println("|All Entries as Followed|" + "\n");
                         all();
                         System.out.println("|No More Entries|" + "\n");
+                        option_2 = false;
                         break;
                     case "D":
                         System.out.println("|All Deposits as Followed|" + "\n");
                         deposits();
                         System.out.println("|No More Entries|" + "\n");
+                        option_2 = false;
                         break;
                     case "P":
                         System.out.println("|All Payments as Followed|" + "\n");
                         payment();
                         System.out.println("|No More Entries|" + "\n");
+                        option_2 = false;
                         break;
                     case "R":
                         reports();
+                        option_2 = false;
                         break;
                     case "0":
                         back();

@@ -10,15 +10,6 @@ public class Home {
     static Scanner scanner = new Scanner(System.in);
     static DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    static FileWriter transaction;
-    static {
-        try {
-            transaction = new FileWriter("transaction.csv", true);
-        } catch (IOException e) {
-            System.out.println("Exception warning A");
-        }
-    }
-
     public static void home_screen() {
         boolean option = true;
 
@@ -75,6 +66,7 @@ public class Home {
             scanner.nextLine();
 
             try {
+                FileWriter transaction = new FileWriter("transaction.csv", true);
                 transaction.write((LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + ad_description + " | " + ad_vendor + " | $" + amount + "\n"));
                 transaction.close();
                 D = false;
@@ -99,6 +91,7 @@ public class Home {
             scanner.nextLine();
 
             try {
+                FileWriter transaction = new FileWriter("transaction.csv", true);
                 transaction.write(LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + mp_description + " | " + mp_vendor + " | $" + payment + "\n");
                 transaction.close();
                 p = false;

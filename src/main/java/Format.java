@@ -13,7 +13,7 @@ public class Format {
     private double amount;
 
     public Format(LocalDate present, LocalTime time, String description, String vendor, double amount){
-        this.present = present;
+        this.present = LocalDate.now();
         this.time = time;
         this.description = description;
         this.vendor = vendor;

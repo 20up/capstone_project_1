@@ -54,6 +54,7 @@ public class Report {
                     case"0":
                         back();
                         option_2 = false;
+                        break;
                     default:
                         System.out.println("!!!!INPUT NOT AVAILABLE!!!!" + "\n");
                 }
