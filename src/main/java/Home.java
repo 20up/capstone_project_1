@@ -1,6 +1,7 @@
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.Format;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -39,21 +40,22 @@ public class Main {
                         X) Exit
                         """);
                 System.out.print("Enter:");
-                String choice = scanner.nextLine().toUpperCase();
+                String choice = scanner.nextLine().toUpperCase().trim(); //wilmer showed me that ".trim" is more user-friendly.
                 switch (choice) {
                     case "D":
                         add_deposit();
-                        System.out.println("Deposit Successful" + "\n");
+                        System.out.println("\nDeposit Successful\n");
                         break;
                     case "P":
                         make_payments();
-                        System.out.println("card information saved" + "\n");
+                        System.out.println("\nPayment Successful\n");
                         break;
                     case "L":
                         Ledger.ledger();
+                        option = false;
                         break;
                     case "X":
-                        exit();
+                        System.out.println("Thanks for trying the app \uD83D\uDE3C");
                         option = false;
                         break;
                     default:
@@ -61,8 +63,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 scanner.nextLine();
-                System.out.println("!!NOT A NUMBER!!");
-
+                System.out.println("!!EXCEPTION!!");
             }
         }
     }
@@ -79,8 +80,9 @@ public class Main {
             System.out.print("Deposit Amount:");
             double amount = scanner.nextDouble();
             scanner.nextLine();
+
             try {
-                transaction.write(LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + ad_description + " | " + ad_vendor + " | $" + amount + "\n");
+                transaction.write((LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + ad_description + " | " + ad_vendor + " | $" + amount + "\n"));
                 transaction.close();
                 D = false;
             } catch (IOException e) {
@@ -91,38 +93,28 @@ public class Main {
     }
 
     public static void make_payments() {
-        boolean mp = true;
-        //this is a loop for the credit/debit information 
-        while (mp) {
-            try {
-                System.out.println("Please enter debit information to make payment");
-                System.out.print("Debit/Credit #:");
-                String card_number = scanner.nextLine();
-                if (card_number.length() == 16) {
-                    System.out.print("expiration date:");
-                    String card_date = scanner.nextLine();//need to make a convert string to date
-                    System.out.print("card cvv:");
-                    int cvv = scanner.nextInt();
-                    scanner.nextLine();
-                } else
-                    System.out.println("not a valid card number");
-
-            } catch (Exception e) {
-                System.out.println("wong");
-            }
+        boolean p = true;
+        while (p) {
+            System.out.println("\n");
+            System.out.println("Please enter a description, vendor, and payment amount.");
+            System.out.print("Description:");
+            String mp_description = scanner.nextLine();
+            System.out.print("Vendor:");
+            String mp_vendor = scanner.nextLine();
+            System.out.print("Payment Amount:");
+            double payment = -Math.abs(scanner.nextDouble()); // Wilmer showed me "-math.abs" for making any number negative
+            scanner.nextLine();
 
             try {
-                transaction.write("");
+                FileWriter payment_file = new FileWriter("transaction.csv", true);
+                payment_file.write(LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + mp_description + " | " + mp_vendor + " | $" + payment + "\n");
+                payment_file.close();
+                p = false;
             } catch (IOException e) {
-                System.out.println("!!exception!! mp");
+                System.out.println("Exception warning p");
             }
         }
     }
-
-    public static void exit() {
-        System.out.println("Thanks trying the app \uD83D\uDE3C");
-    }
-
 
 }
 
