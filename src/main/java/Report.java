@@ -7,17 +7,6 @@ public class Report {
     static Scanner scanner = new Scanner(System.in);
     static DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    static FileWriter transaction;
-
-    static {
-        try {
-            transaction = new FileWriter("transaction.csv", true);
-        } catch (IOException e) {
-            System.out.println("Exception warning A");
-            ;
-        }
-    }
-
     public static void reporter() {
         boolean option_2 = true;
 
@@ -66,9 +55,7 @@ public class Report {
 
     }
 
-    public static void month_to_date(){
-
-    }
+    public static void month_to_date(){}
 
     public static void previous_month(){}
 

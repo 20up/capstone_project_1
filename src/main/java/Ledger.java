@@ -26,19 +26,16 @@ public class Ledger {
                         System.out.println("|All Entries as Followed|" + "\n");
                         all();
                         System.out.println("|No More Entries|" + "\n");
-                        option_2 = false;
                         break;
                     case "D":
                         System.out.println("|All Deposits as Followed|" + "\n");
                         deposits();
                         System.out.println("|No More Entries|" + "\n");
-                        option_2 = false;
                         break;
                     case "P":
                         System.out.println("|All Payments as Followed|" + "\n");
                         payment();
                         System.out.println("|No More Entries|" + "\n");
-                        option_2 = false;
                         break;
                     case "R":
                         reports();
@@ -77,7 +74,6 @@ public class Ledger {
             String positive;
             while ((positive = reader.readLine()) != null) {
                 String[] ad = positive.split("\\$");
-                if (ad.length < 2) continue;
                 double amount = Double.parseDouble(ad[1].trim());
                 if (amount > 0) {
                     System.out.println(positive);
@@ -95,10 +91,7 @@ public class Ledger {
             String negative;
             while ((negative = reader.readLine()) != null) {
                 String[] mp = negative.split("\\$");
-                if (mp.length < 2) continue;
-
                 double amount = Double.parseDouble(mp[1].trim());
-
                 if (amount < 0) {
                     System.out.println(negative);
                 }
