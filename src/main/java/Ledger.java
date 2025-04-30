@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Ledger {
     static Scanner scanner = new Scanner(System.in);
 
-
     public static void ledger() {
         boolean option_2 = true;
 
