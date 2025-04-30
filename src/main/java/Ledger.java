@@ -29,10 +29,10 @@ public class Ledger {
                         D) Deposits
                         P) Payments
                         R) Reports
-                        H) Home        
+                        0) Back
                         """);
                 System.out.print("Enter:");
-                String choice_2 = scanner.nextLine().toUpperCase();
+                String choice_2 = scanner.nextLine().toUpperCase().trim();
                 switch (choice_2) {
                     case "A":
                         System.out.println("|All Entries as Followed|" + "\n");
@@ -40,24 +40,28 @@ public class Ledger {
                         System.out.println("|No More Entries|" + "\n");
                         break;
                     case "D":
+                        System.out.println("|All Deposits as Followed|" + "\n");
                         deposits();
-                        System.out.println("card information saved" + "\n");
+                        System.out.println("|No More Entries|" + "\n");
                         break;
                     case "P":
+                        System.out.println("|All Payments as Followed|" + "\n");
                         payment();
+                        System.out.println("|No More Entries|" + "\n");
                         break;
                     case "R":
                         reports();
                         break;
-                    case "H":
-                        home();
+                    case "0":
+                        back();
+                        option_2 = false;
                         break;
                     default:
                         System.out.println("!!!!INPUT NOT AVAILABLE!!!!" + "\n");
                 }
             } catch (Exception e) {
                 scanner.nextLine();
-                System.out.println("!!NOT A NUMBER!!");
+                System.out.println("!!EXCEPTION!!");
             }
         }
     }
@@ -76,15 +80,47 @@ public class Ledger {
     }
 
     public static void deposits() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"));
+            String positive;
+            while ((positive = reader.readLine()) != null) {
+                String[] ad = positive.split("\\$");
+                if (ad.length < 2) continue;
+                double amount = Double.parseDouble(ad[1].trim());
+                if (amount > 0) {
+                    System.out.println(positive);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("ran into problem");
+        }
     }
 
     public static void payment() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"));
+            String negative;
+            while ((negative = reader.readLine()) != null) {
+                String[] mp = negative.split("\\$");
+                if (mp.length < 2) continue;
+
+                double amount = Double.parseDouble(mp[1].trim());
+
+                if (amount < 0) {
+                    System.out.println(negative);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("ran into problem");
+        }
     }
 
     public static void reports() {
+        Report.reporter();
     }
 
-    public static void home() {
-        Main.home_screen();
+    public static void back() {
+        Home.home_screen();
     }
 }

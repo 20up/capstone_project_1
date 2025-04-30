@@ -1,16 +1,29 @@
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-public class Data_for_format {
-    private String home;
+public class Format {
+    static DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("HH:mm:ss");
+
     private LocalDate present;
     private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
 
-    public LocalDate getPresent() {return present;}
+    public Format(LocalDate present, LocalTime time, String description, String vendor, double amount){
+        this.present = present;
+        this.time = time;
+        this.description = description;
+        this.vendor = vendor;
+        this.amount = amount;
+    }
+
+    public LocalDate getPresent() {
+
+        return present;
+    }
 
     public void setPresent(LocalDate present) {this.present = present;}
 
@@ -30,7 +43,7 @@ public class Data_for_format {
 
     public void setAmount(double amount) {this.amount = amount;}
 
-    public void descib_add_d(){
-        System.out.println("Add Deposit");
+    public void date_time(){
+        System.out.println(present +" | "+ time.format(dtf1));
     }
 }

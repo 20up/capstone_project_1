@@ -1,29 +1,22 @@
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.Format;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class Main {
+public class Home {
     static Scanner scanner = new Scanner(System.in);
-
     static DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     static FileWriter transaction;
-
     static {
         try {
             transaction = new FileWriter("transaction.csv", true);
         } catch (IOException e) {
             System.out.println("Exception warning A");
         }
-    }
-
-    public static void main(String[] args) {
-        home_screen();
     }
 
     public static void home_screen() {
@@ -106,9 +99,8 @@ public class Main {
             scanner.nextLine();
 
             try {
-                FileWriter payment_file = new FileWriter("transaction.csv", true);
-                payment_file.write(LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + mp_description + " | " + mp_vendor + " | $" + payment + "\n");
-                payment_file.close();
+                transaction.write(LocalDate.now() + " | " + LocalTime.now().format(dtf1) + " | " + mp_description + " | " + mp_vendor + " | $" + payment + "\n");
+                transaction.close();
                 p = false;
             } catch (IOException e) {
                 System.out.println("Exception warning p");

@@ -18,7 +18,7 @@ public class Report {
         }
     }
 
-    public static void repoter() {
+    public static void reporter() {
         boolean option_2 = true;
 
         while (option_2) {
@@ -65,7 +65,9 @@ public class Report {
 
     }
 
-    public static void month_to_date(){}
+    public static void month_to_date(){
+
+    }
 
     public static void previous_month(){}
 
