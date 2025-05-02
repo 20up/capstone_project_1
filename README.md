@@ -32,7 +32,6 @@ A simple, command-line Java application that helps you track financial transacti
  ```bash
 - ├── Transaction.java    # Model class for financial transactions
 ├── Ledger.java         # Handles transaction storage and filtering
-├── Menu.java           # CLI interface and user interaction
 ├── transactions.csv    # Automatically created data file
 └── README.md           # Project documentation
  ```
