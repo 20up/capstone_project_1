@@ -27,6 +27,27 @@ A simple, command-line Java application that helps you track financial transacti
 - Java SDK 17 or newer installed
 - A Java IDE (like IntelliJ, Eclipse) or terminal with `javac`/`java` support
 
+### File Structure
+
+ ```bash
+- ├── Transaction.java    # Model class for financial transactions
+├── Ledger.java         # Handles transaction storage and filtering
+├── Menu.java           # CLI interface and user interaction
+├── transactions.csv    # Automatically created data file
+└── README.md           # Project documentation
+ ```
+###Example Menu
+
+ ```bash
+Welcome to the Financial Tracker Menu!
+1. Add Deposit
+2. Make Payment
+3. View Ledger
+4. View Reports
+5. Search by Vendor
+6. Exit
+ ```
+
 ### Running the Program
 
 1. Clone the repository:
