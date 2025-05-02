@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cvs_reader {
-    public static List<String> readTransactionFile(String filename)  {
+    public static List<String> read_transaction_file(String filename)  {
         try{
             List<String> cvs_text = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = reader.readLine()) != null) {
+
                 cvs_text.add(line);
             }
             reader.close();

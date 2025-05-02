@@ -81,7 +81,7 @@ public class Report {
 
 
     public static void previous_month() {
-        try{
+        try {
 
             List<String> file = Cvs_reader.read_transaction_file("transaction.csv");
 
@@ -89,40 +89,73 @@ public class Report {
             LocalDate first_day_lm = today.minusMonths(1).withDayOfMonth(1);
             LocalDate last_day_lm = today.minusMonths(1).withDayOfMonth(today.minusMonths(1).lengthOfMonth());
 
-            for(String prev_month : file){
+            for (String prev_month : file) {
                 String[] parts = prev_month.split("\\|");
 
-                if(parts.length >= 2){
+                if (parts.length >= 2) {
                     LocalDate date = LocalDate.parse(parts[0].trim());
 
-                    if(!date.isBefore(first_day_lm) && !date.isAfter(last_day_lm)) {
+                    if (!date.isBefore(first_day_lm) && !date.isAfter(last_day_lm)) {
                         System.out.println(prev_month);
                     }
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("!!EXCEPTION!! 2");
         }
     }
 
     public static void year_to_date() {
-        try{
+        try {
             List<String> file = Cvs_reader.read_transaction_file("transaction.csv");
 
             LocalDate today = LocalDate.now();
-            LocalDate this_year = today.withDayOfYear(1);
+            LocalDate first_day_ty = today.withDayOfYear(1);
 
+            for (String year_date : file) {
+                String[] part = year_date.split("\\|");
 
-        }catch (Exception e){
-            System.out.println();
+                if (part.length >= 2) {
+                    LocalDate date = LocalDate.parse(part[0].trim());
+
+                    if (!date.isBefore(first_day_ty) && !date.isAfter(today)) {
+                        System.out.println(year_date);
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println("!!EXCEPTION!! 3");
         }
 
     }
 
     public static void previous_year() {
+        try {
+            List<String> file = Cvs_reader.read_transaction_file("transaction.csv");
+
+            LocalDate today = LocalDate.now();
+            LocalDate first_day_ly = today.minusYears(1).withDayOfYear(1);
+            LocalDate last_day_ly = today.minusYears(1).withDayOfYear(today.minusYears(1).lengthOfYear());
+
+            for (String prev_year : file) {
+                String[] part = prev_year.split("\\|");
+
+                if (part.length >= 2) {
+                    LocalDate date = LocalDate.parse(part[0].trim());
+
+                    if (!date.isBefore(first_day_ly) && !date.isAfter(last_day_ly)) {
+                        System.out.println(prev_year);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("!!EXCEPTION!! 4");
+        }
     }
 
     public static void search_by_vendor() {
+
     }
 
     public static void back() {
