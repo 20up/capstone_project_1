@@ -52,6 +52,7 @@ public class Ledger {
                 System.out.println("!!EXCEPTION!!");
             }
         }
+        scanner.close();
     }
 
     public static void all() {

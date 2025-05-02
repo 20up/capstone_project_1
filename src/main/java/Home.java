@@ -39,7 +39,7 @@ public class Home {
                         option = false;
                         break;
                     case "X":
-                        System.out.println("Thanks for trying the app \uD83D\uDE3C");
+                        System.out.println("\nThanks for trying the app \uD83D\uDE3C\n");
                         option = false;
                         break;
                     default:
@@ -50,6 +50,7 @@ public class Home {
                 System.out.println("!!EXCEPTION!!");
             }
         }
+        scanner.close();
     }
 
     public static void add_deposit() {
