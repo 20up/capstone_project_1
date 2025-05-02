@@ -36,7 +36,7 @@ A simple, command-line Java application that helps you track financial transacti
 ├── transactions.csv    # Automatically created data file
 └── README.md           # Project documentation
  ```
-###Example Menu
+### Example Menu
 
  ```bash
 Welcome to the Financial Tracker Menu!
