@@ -1,4 +1,4 @@
-# Java CLI Financial Tracker
+# Accounting Ledger App
 
 A simple, command-line Java application that helps you track financial transactions including deposits and payments. The application reads and writes to a CSV file and provides a user-friendly menu interface to manage and view your financial data.
 
@@ -54,3 +54,5 @@ Enter:
    ```bash
    git clone https://github.com/your-username/java-financial-tracker.git
    cd java-financial-tracker
+   ```
+Made with ☕ by Preston Panom App dev track at Year Up United
