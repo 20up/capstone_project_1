@@ -1,7 +1,8 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.util.*;
+
 
 public class Report {
     static Scanner scanner = new Scanner(System.in);
@@ -23,7 +24,7 @@ public class Report {
                         0) Back
                         """);
                 System.out.print("Enter:");
-                String choice_2 = scanner.nextLine().toUpperCase();
+                String choice_2 = scanner.nextLine().trim();
                 switch (choice_2) {
                     case "1":
                         month_to_date();
@@ -40,7 +41,7 @@ public class Report {
                     case "5":
                         search_by_vendor();
                         break;
-                    case"0":
+                    case "0":
                         back();
                         option_2 = false;
                         break;
@@ -55,21 +56,46 @@ public class Report {
 
     }
 
-    public static void month_to_date(){}
+    public static void month_to_date() {
+        try {
+            List<String> file = Cvs_reader.readTransactionFile("transaction.csv");
 
-    public static void previous_month(){}
+            LocalDate today = LocalDate.now();
+            LocalDate first_day = today.withDayOfMonth(1);
 
-    public static void year_to_date(){}
+            for (String month_to_date : file) {
+                String[] parts = month_to_date.split("\\|");
 
-    public static void previous_year(){}
+                if (parts.length >= 2) {
+                    LocalDate date = LocalDate.parse(parts[0].trim());
 
-    public static void search_by_vendor(){}
-
-    public static void back(){
-        Ledger.ledger();
+                    if (!date.isBefore(first_day) && !date.isAfter(today)) {
+                        System.out.println(month_to_date);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("!!EXCEPTION!! 1");
+        }
     }
 
 
+    public static void previous_month() {
+    }
+
+    public static void year_to_date() {
+
+    }
+
+    public static void previous_year() {
+    }
+
+    public static void search_by_vendor() {
+    }
+
+    public static void back() {
+        Ledger.ledger();
+    }
 
 
 }
