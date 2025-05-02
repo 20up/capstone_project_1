@@ -55,6 +55,4 @@ Enter:
    git clone https://github.com/your-username/java-financial-tracker.git
    cd java-financial-tracker
    ```
-
-   Made with ☕ by Preston Panom
-   Year Up United
+Made with ☕ by Preston Panom App dev track at Year Up United
