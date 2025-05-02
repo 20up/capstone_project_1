@@ -71,14 +71,14 @@ public class Report {
             LocalDate today = LocalDate.now();
             LocalDate first_day = today.withDayOfMonth(1);
 
-            for (String month_to_date : file) {
-                String[] parts = month_to_date.split("\\|");
+            for (String line_text : file) {
+                String[] parts = line_text.split("\\|");
 
                 if (parts.length >= 2) {
                     LocalDate date = LocalDate.parse(parts[0].trim());
 
                     if (!date.isBefore(first_day) && !date.isAfter(today)) {
-                        System.out.println(month_to_date);
+                        System.out.println(line_text);
                     }
                 }
             }
@@ -96,14 +96,14 @@ public class Report {
             LocalDate first_day_lm = today.minusMonths(1).withDayOfMonth(1);
             LocalDate last_day_lm = today.minusMonths(1).withDayOfMonth(today.minusMonths(1).lengthOfMonth());
 
-            for (String prev_month : file) {
-                String[] parts = prev_month.split("\\|");
+            for (String line_text : file) {
+                String[] parts = line_text.split("\\|");
 
                 if (parts.length >= 2) {
                     LocalDate date = LocalDate.parse(parts[0].trim());
 
                     if (!date.isBefore(first_day_lm) && !date.isAfter(last_day_lm)) {
-                        System.out.println(prev_month);
+                        System.out.println(line_text);
                     }
                 }
             }
@@ -119,14 +119,14 @@ public class Report {
             LocalDate today = LocalDate.now();
             LocalDate first_day_ty = today.withDayOfYear(1);
 
-            for (String year_date : file) {
-                String[] part = year_date.split("\\|");
+            for (String line_text : file) {
+                String[] part = line_text.split("\\|");
 
                 if (part.length >= 2) {
                     LocalDate date = LocalDate.parse(part[0].trim());
 
                     if (!date.isBefore(first_day_ty) && !date.isAfter(today)) {
-                        System.out.println(year_date);
+                        System.out.println(line_text);
                     }
                 }
 
@@ -144,14 +144,14 @@ public class Report {
             LocalDate first_day_ly = today.minusYears(1).withDayOfYear(1);
             LocalDate last_day_ly = today.minusYears(1).withDayOfYear(today.minusYears(1).lengthOfYear());
 
-            for (String prev_year : file) {
-                String[] part = prev_year.split("\\|");
+            for (String line_text : file) {
+                String[] part = line_text.split("\\|");
 
                 if (part.length >= 2) {
                     LocalDate date = LocalDate.parse(part[0].trim());
 
                     if (!date.isBefore(first_day_ly) && !date.isAfter(last_day_ly)) {
-                        System.out.println(prev_year);
+                        System.out.println(line_text);
                     }
                 }
             }
@@ -170,14 +170,14 @@ public class Report {
 
             System.out.println("\n|Search Vendor as Followed|\n");
 
-            for (String right_vendor : file) {
-                String[] part = right_vendor.split("\\|");
+            for (String line_text : file) {
+                String[] part = line_text.split("\\|");
 
                 if (part.length >= 2) {
                     String the_vendor = part[3].trim();
 
                     if (vendor.equalsIgnoreCase(the_vendor)) {
-                        System.out.println(right_vendor);
+                        System.out.println(line_text);
                     }
                 }
             }

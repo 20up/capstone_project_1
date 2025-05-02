@@ -12,7 +12,6 @@ public class Cvs_reader {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = reader.readLine()) != null) {
-
                 cvs_text.add(line);
             }
             reader.close();

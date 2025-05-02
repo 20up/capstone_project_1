@@ -12,7 +12,7 @@ public class Ledger {
                 System.out.println("\n" + "       |Ledger|");
                 System.out.println("""
                         |Please choose a Option|
-                        A) All
+                        A) All Entries
                         D) Deposits
                         P) Payments
                         R) Reports
@@ -71,12 +71,12 @@ public class Ledger {
     public static void deposits() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"));
-            String positive;
-            while ((positive = reader.readLine()) != null) {
-                String[] ad = positive.split("\\$");
+            String line_text;
+            while ((line_text = reader.readLine()) != null) {
+                String[] ad = line_text.split("\\$");
                 double amount = Double.parseDouble(ad[1].trim());
                 if (amount > 0) {
-                    System.out.println(positive);
+                    System.out.println(line_text);
                 }
             }
             reader.close();
@@ -88,12 +88,12 @@ public class Ledger {
     public static void payment() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("transaction.csv"));
-            String negative;
-            while ((negative = reader.readLine()) != null) {
-                String[] mp = negative.split("\\$");
+            String line_text;
+            while ((line_text = reader.readLine()) != null) {
+                String[] mp = line_text.split("\\$");
                 double amount = Double.parseDouble(mp[1].trim());
                 if (amount < 0) {
-                    System.out.println(negative);
+                    System.out.println(line_text);
                 }
             }
         } catch (IOException e) {

@@ -24,7 +24,9 @@ public class Home {
                         X) Exit
                         """);
                 System.out.print("Enter:");
+
                 String choice = scanner.nextLine().toUpperCase().trim(); //wilmer showed me that ".trim" is more user-friendly.
+
                 switch (choice) {
                     case "D":
                         add_deposit();
