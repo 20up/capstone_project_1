@@ -39,13 +39,14 @@ A simple, command-line Java application that helps you track financial transacti
 ### Example Menu
 
  ```bash
-Welcome to the Financial Tracker Menu!
-1. Add Deposit
-2. Make Payment
-3. View Ledger
-4. View Reports
-5. Search by Vendor
-6. Exit
+         |Home|
+|Please choose a Option|
+D) Add Deposit
+P) Make Payment (Debit)
+L) Ledger
+X) Exit
+
+Enter:
  ```
 
 ### Running the Program
