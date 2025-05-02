@@ -58,7 +58,7 @@ public class Report {
 
     public static void month_to_date() {
         try {
-            List<String> file = Cvs_reader.readTransactionFile("transaction.csv");
+            List<String> file = Cvs_reader.read_transaction_file("transaction.csv");
 
             LocalDate today = LocalDate.now();
             LocalDate first_day = today.withDayOfMonth(1);
@@ -81,9 +81,41 @@ public class Report {
 
 
     public static void previous_month() {
+        try{
+
+            List<String> file = Cvs_reader.read_transaction_file("transaction.csv");
+
+            LocalDate today = LocalDate.now();
+            LocalDate first_day_lm = today.minusMonths(1).withDayOfMonth(1);
+            LocalDate last_day_lm = today.minusMonths(1).withDayOfMonth(today.minusMonths(1).lengthOfMonth());
+
+            for(String prev_month : file){
+                String[] parts = prev_month.split("\\|");
+
+                if(parts.length >= 2){
+                    LocalDate date = LocalDate.parse(parts[0].trim());
+
+                    if(!date.isBefore(first_day_lm) && !date.isAfter(last_day_lm)) {
+                        System.out.println(prev_month);
+                    }
+                }
+            }
+        }catch (Exception e){
+            System.out.println("!!EXCEPTION!! 2");
+        }
     }
 
     public static void year_to_date() {
+        try{
+            List<String> file = Cvs_reader.read_transaction_file("transaction.csv");
+
+            LocalDate today = LocalDate.now();
+            LocalDate this_year = today.withDayOfYear(1);
+
+
+        }catch (Exception e){
+            System.out.println();
+        }
 
     }
 
